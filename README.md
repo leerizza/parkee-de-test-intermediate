@@ -225,3 +225,6 @@ minimal sekali, atau generate manual:
 docker exec parkee-airflow-scheduler bash -c \
   "cd /opt/airflow/dbt && dbt docs generate --project-dir /opt/airflow/dbt --profiles-dir /opt/airflow/dbt"
 ```
+
+## Link Video Walkthrough
+https://drive.google.com/file/d/1JpTMqk-3ajmmxyBofBBeBI5S75AFLU3h/view?usp=sharing
