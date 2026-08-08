@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parkee POS Analytics Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Parkee POS Analytics Dashboard</h1>
+    <p>Sistem Kasir Minimarket — 8 pertanyaan analitik (Beginner + Intermediate), data dari <code>fact_sales</code> / <code>fact_promotion_usage</code>.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Q1. Top 5 Produk Terlaris per Kategori</h2>
+      <p class="subtitle">Berdasarkan total quantity terjual</p>
+      <div class="chart-wrap"><canvas id="chart-top-products-category"></canvas></div>
+    </section>
+
+    <section class="card">
+      <h2>Q2. Tren Revenue Bulanan</h2>
+      <p class="subtitle">Total revenue per bulan</p>
+      <div class="chart-wrap"><canvas id="chart-monthly-revenue"></canvas></div>
+    </section>
+
+    <section class="card">
+      <h2>Q3. Distribusi Metode Pembayaran</h2>
+      <p class="subtitle">Persentase transaksi per metode pembayaran</p>
+      <div class="chart-wrap"><canvas id="chart-payment-distribution"></canvas></div>
+    </section>
+
+    <section class="card wide">
+      <h2>Q4. Revenue per Toko per Bulan</h2>
+      <p class="subtitle">Tren 6 bulan terakhir</p>
+      <div class="chart-wrap"><canvas id="chart-revenue-store"></canvas></div>
+    </section>
+
+    <section class="card wide">
+      <h2>Q5. Efektivitas Promosi</h2>
+      <p class="subtitle">Total discount per promo, dan rata-rata nilai transaksi saat promo aktif vs tidak</p>
+      <div class="chart-wrap"><canvas id="chart-promo-discount"></canvas></div>
+      <div class="chart-wrap"><canvas id="chart-promo-avg"></canvas></div>
+    </section>
+
+    <section class="card wide">
+      <h2>Q6. Top 3 Produk Terlaris per Kota</h2>
+      <p class="subtitle">Berdasarkan revenue</p>
+      <div class="chart-wrap"><canvas id="chart-top-products-city"></canvas></div>
+    </section>
+
+    <section class="card">
+      <h2>Q7. Segmentasi Pelanggan</h2>
+      <p class="subtitle">High / Medium / Low spender, jumlah pelanggan per kota</p>
+      <div class="chart-wrap"><canvas id="chart-customer-segments"></canvas></div>
+    </section>
+
+    <section class="card">
+      <h2>Q8. Transaksi per Hari dalam Seminggu</h2>
+      <p class="subtitle">Jumlah transaksi dan revenue</p>
+      <div class="chart-wrap"><canvas id="chart-transactions-day"></canvas></div>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

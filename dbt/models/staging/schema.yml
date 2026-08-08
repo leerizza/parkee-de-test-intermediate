@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: One row per customer, unioned across all tenants.
+    columns:
+      - name: customer_id
+        description: Source surrogate key from the tenant's Postgres customers table.
+        tests: [not_null]
+      - name: tenant_id
+        description: Tenant schema this row came from (tenant_1/2/3).
+        tests: [not_null]
+      - name: gender
+        tests:
+          - accepted_values:
+              values: ['male', 'female']
+
+  - name: stg_products
+    description: One row per product, unioned across all tenants.
+    columns:
+      - name: product_id
+        tests: [not_null]
+      - name: tenant_id
+        tests: [not_null]
+
+  - name: stg_stores
+    description: One row per store, unioned across all tenants.
+    columns:
+      - name: store_id
+        tests: [not_null]
+      - name: store_type
+        tests:
+          - accepted_values:
+              values: ['minimarket', 'supermarket', 'express']
+
+  - name: stg_transactions
+    description: Completed transactions only, unioned across all tenants.
+    columns:
+      - name: transaction_id
+        tests: [not_null]
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['cash', 'debit', 'credit', 'e-wallet']
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed']
+
+  - name: stg_transaction_items
+    description: Line items per transaction.
+    columns:
+      - name: item_id
+        tests: [not_null]
+      - name: transaction_id
+        tests: [not_null]
+      - name: product_id
+        tests: [not_null]
+
+  - name: stg_promotions
+    description: One row per promotion, unioned across all tenants.
+    columns:
+      - name: promo_id
+        tests: [not_null]
+      - name: promo_type
+        tests:
+          - accepted_values:
+              values: ['discount', 'bundle', 'cashback']
+
+  - name: stg_transaction_promotions
+    description: Bridge between transactions and the promotions applied to them.
+    columns:
+      - name: transaction_promotion_id
+        tests: [not_null]
+      - name: transaction_id
+        tests: [not_null]
+      - name: promo_id
+        tests: [not_null]
+
+  - name: stg_suppliers
+    description: One row per supplier, unioned across all tenants (not yet linked to products at Intermediate level).
+    columns:
+      - name: supplier_id
+        tests: [not_null]

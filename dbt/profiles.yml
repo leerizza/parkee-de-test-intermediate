@@ -1,0 +1,13 @@
+parkee:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: analytics
+      driver: native
+      host: "{{ env_var('CLICKHOUSE_HOST', 'clickhouse') }}"
+      port: "{{ env_var('CLICKHOUSE_PORT', '9000') | as_number }}"
+      user: "{{ env_var('CLICKHOUSE_USER', 'default') }}"
+      password: "{{ env_var('CLICKHOUSE_PASSWORD', 'clickhouse_secret') }}"
+      secure: false
+      threads: 4

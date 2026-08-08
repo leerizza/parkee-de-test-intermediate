@@ -1,0 +1,35 @@
+{
+  "tenants": [
+    {
+      "name": "tenant_1",
+      "schema": "tenant_1",
+      "postgres_dsn": "postgres://parkee:parkee_secret@postgres:5432/parkee?sslmode=disable"
+    },
+    {
+      "name": "tenant_2",
+      "schema": "tenant_2",
+      "postgres_dsn": "postgres://parkee:parkee_secret@postgres:5432/parkee?sslmode=disable"
+    },
+    {
+      "name": "tenant_3",
+      "schema": "tenant_3",
+      "postgres_dsn": "postgres://parkee:parkee_secret@postgres:5432/parkee?sslmode=disable"
+    }
+  ],
+  "clickhouse": {
+    "addr": "clickhouse:9000",
+    "database": "raw",
+    "username": "default",
+    "password": "clickhouse_secret"
+  },
+  "tables": [
+    { "name": "customers", "watermark_column": "updated_at" },
+    { "name": "products", "watermark_column": "updated_at" },
+    { "name": "stores", "watermark_column": null },
+    { "name": "transactions", "watermark_column": "transaction_date" },
+    { "name": "transaction_items", "watermark_column": null },
+    { "name": "promotions", "watermark_column": null },
+    { "name": "transaction_promotions", "watermark_column": null },
+    { "name": "suppliers", "watermark_column": "created_at" }
+  ]
+}
